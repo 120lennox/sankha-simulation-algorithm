@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'sankha_engine',
     'applicants',
     'programs',
+    'subjects',
 
     # 3rd party apps
     'rest_framework'

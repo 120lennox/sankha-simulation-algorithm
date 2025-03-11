@@ -1,17 +1,7 @@
 from django.db import models
 from programs.models import Program
-from django.core.validators import MinValueValidator, MaxValueValidator
+from subjects.models import Grade
 
-# Create your models here.
-
-class Subject(models.Model):
-    name = models.CharField(max_length=100, unique=True, blank=False)
-
-class Grade(models.Model):
-    subject = models.ManyToManyField(Subject)
-    score = models.IntegerField(validators=[
-        MinValueValidator(1), MaxValueValidator(9)
-    ])
 class Applicant(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)

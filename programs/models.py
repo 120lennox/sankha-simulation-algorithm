@@ -1,10 +1,12 @@
 from django.db import models
+from subjects.models import Subject
 
 
 # Create your models here.
 class Requirement(models.Model):
-    subject = models.CharField(unique=True, blank=False, max_length=100)
-    restriction = 
+    subject = models.ManyToManyField(Subject)
+
+    
 class Program(models.Model):
     course_code = models.CharField(max_length=10)
     name = models.CharField(max_length=255)
