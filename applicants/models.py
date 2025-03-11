@@ -9,7 +9,7 @@ class Subject(models.Model):
         MinValueValidator(1),
         MaxValueValidator(9)
     ])
-class Applicants(models.Model):
+class Applicant(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     school = models.CharField(max_length=200)
