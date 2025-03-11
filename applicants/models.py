@@ -1,4 +1,5 @@
 from django.db import models
+from programs.models import Program
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
@@ -14,6 +15,7 @@ class Applicant(models.Model):
     email = models.EmailField(max_length=100)
     school = models.CharField(max_length=200)
     subjects = models.ManyToManyField(Subject)
+    program = models.ManyToManyField(Program)
 
     def __str__(self):
         return self.name
