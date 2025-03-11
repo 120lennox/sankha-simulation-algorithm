@@ -6,9 +6,10 @@ from subjects.models import Subject
 class Requirement(models.Model):
     GRADE_CHOICES = [(i, str(i)) for i in range(1, 10)]
 
-    program = models.ForeignKey('Program', on_delete=models.CASCADE, related_name='subject_requirement')
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    program = models.ForeignKey('Program', null=True, on_delete=models.CASCADE, related_name='subject_requirement')
+    subject = models.ForeignKey(Subject, null=True, on_delete=models.CASCADE)
     max_grade = models.IntegerField(
+        default = 6,
         choices=GRADE_CHOICES, 
         help_text="Maximum acceptable grade for this subject"
     )
