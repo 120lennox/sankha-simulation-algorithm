@@ -15,10 +15,10 @@ class Requirement(models.Model):
     )
 
     def __str__(self):
-        return f"{self.name} (max grade: {self.max_grade})"
+        return f"{self.subject.name} (max grade: {self.max_grade})"
     
-    class Meta:
-        unique_together = ['program', 'subject']
+    # class Meta:
+    #     unique_together = ['program', 'subject']
 
     
 class Program(models.Model):
