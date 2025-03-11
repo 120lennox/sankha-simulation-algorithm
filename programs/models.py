@@ -4,14 +4,26 @@ from subjects.models import Subject
 
 # Create your models here.
 class Requirement(models.Model):
-    subject = models.ManyToManyField(Subject)
+    GRADE_CHOICES = [(i, str(i)) for i in range(1, 10)]
+
+    program = models.ForeignKey('Program', on_delete=models.CASCADE, related_name='subject_requirement')
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    max_grade = models.IntegerField(
+        choices=GRADE_CHOICES, 
+        help_text="Maximum acceptable grade for this subject"
+    )
+
+    def __str__(self):
+        return f"{self.name} (max grade: {self.max_grade})"
+    
+    class Meta:
+        unique_together = ['program', 'subject']
 
     
 class Program(models.Model):
     course_code = models.CharField(max_length=10)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    requirements = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
