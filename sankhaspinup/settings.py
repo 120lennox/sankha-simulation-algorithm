@@ -40,6 +40,12 @@ INSTALLED_APPS = [
 
     # local apps
     'initApp',
+    'sankha_engine',
+    'applicants',
+    'programs',
+
+    # 3rd party apps
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
