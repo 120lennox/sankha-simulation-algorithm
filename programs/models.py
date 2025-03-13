@@ -6,7 +6,7 @@ from subjects.models import Subject
 class Requirement(models.Model):
     GRADE_CHOICES = [(i, str(i)) for i in range(1, 10)]
 
-    program = models.ForeignKey('Program', null=True, on_delete=models.CASCADE, related_name='subject_requirement')
+    program = models.ForeignKey('Program', null=True, on_delete=models.CASCADE, related_name='subject_requirements')
     subject = models.ForeignKey(Subject, null=True, on_delete=models.CASCADE)
     max_grade = models.IntegerField(
         default = 6,
@@ -17,8 +17,9 @@ class Requirement(models.Model):
     def __str__(self):
         return f"{self.subject.name} (max grade: {self.max_grade})"
     
-    # class Meta:
-    #     unique_together = ['program', 'subject']
+    class Meta:
+        # unique_together = ['program', 'subject']
+        pass
 
     
 class Program(models.Model):
