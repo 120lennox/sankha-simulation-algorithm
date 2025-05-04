@@ -20,6 +20,14 @@ class Student:
         # get primary applicant program choice (first choice)
         program_choice = applicant.program.first()
 
+        # new student data structure instance
+        return cls(
+            id=applicant.id,
+            name=applicant.name,
+            grades=grades,
+            program_choice = program_choice
+        )
+
 class Program:
     def __init__(self, id, name, capacity, subject_requirements):
         self.id = id 
