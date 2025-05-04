@@ -19,3 +19,11 @@ class Student:
 
         # get primary applicant program choice (first choice)
         program_choice = applicant.program.first()
+
+class Program:
+    def __init__(self, id, name, capacity, subject_requirements):
+        self.id = id 
+        self.name = name 
+        self.capacity = capacity
+        self.subject_requirements = subject_requirements # dictionary
+        self.admitted_students = []
