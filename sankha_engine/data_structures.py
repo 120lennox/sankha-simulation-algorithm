@@ -7,7 +7,7 @@ class Student:
         self.is_admitted = False
         self.aggregate_score = None
 
-    # linking the student data structure with applicant database model
+    # linking student data structure with applicant database model
 
     @classmethod
     def from_applicantModel(cls, applicant):
@@ -27,3 +27,26 @@ class Program:
         self.capacity = capacity
         self.subject_requirements = subject_requirements # dictionary
         self.admitted_students = []
+
+    # linking program data structure with with program database model
+
+    @classmethod
+    def from_programModel(cls, program_model, capacity=None):
+        # returns new program data structure innstance 
+
+        # get all subject requirements for this program
+        requirements = program_model.subject_requirements.all()
+
+        # convert the requirements to dictionary
+        subject_requirements = {req.subject.name: req.max_grade for req in requirements}
+
+        # new program data structure
+        return cls(
+            id=program_model.id,
+            name=program_model.name,
+            capacity=capacity if capacity is not None else 0,
+            subject_requirements = subject_requirements
+        )
+
+
+     
