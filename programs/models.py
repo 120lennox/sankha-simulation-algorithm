@@ -26,7 +26,7 @@ class Program(models.Model):
     course_code = models.CharField(max_length=10)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    capacity = models.IntegerField()
+    capacity = models.IntegerField(default=10)
 
     def __str__(self):
         return self.name
