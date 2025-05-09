@@ -1,6 +1,7 @@
 from programs.models import Program
 from applicants.models import Applicant
 from subjects.models import Subject
+from .data_structures import Applicant, Program
 
 class DBInterface:
     def __init__(self):
@@ -8,7 +9,8 @@ class DBInterface:
 
     def get_program(self,program_id):
         try:
-            program = Program.objects.get(id=program_id)
+            prog = Program.objects.get(id=program_id)
+            program = Program.from_programModel(prog)
             return program
         except:
             return None

@@ -1,11 +1,13 @@
-class Student:
-    def __init__(self, id, name, grades, program_choice):
-        self.id = id
-        self.name = name
-        self.grades = grades # dictionary
-        self.program_choice = program_choice
-        self.is_admitted = False
-        self.aggregate_score = None
+class Applicant:
+    def __init__(self):
+        pass
+    # def __init__(self, id, name, grades, program_choice):
+    #     self.id = id
+    #     self.name = name
+    #     self.grades = grades # dictionary
+    #     self.program_choice = program_choice
+    #     self.is_admitted = False
+    #     self.aggregate_score = None
 
     # linking student data structure with applicant database model
 
@@ -29,12 +31,14 @@ class Student:
         )
 
 class Program:
-    def __init__(self, id, name, capacity, subject_requirements):
-        self.id = id 
-        self.name = name 
-        self.capacity = capacity
-        self.subject_requirements = subject_requirements # dictionary
-        self.admitted_students = []
+    def __init__(self):
+        pass
+    # def __init__(self, id, name, capacity, subject_requirements):
+    #     self.id = id 
+    #     self.name = name 
+    #     self.capacity = capacity
+    #     self.subject_requirements = subject_requirements # dictionary
+    #     self.admitted_students = []
 
     # linking program data structure with with program database model
 
