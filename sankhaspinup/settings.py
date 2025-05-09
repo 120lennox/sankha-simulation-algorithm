@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'applicants',
     'programs',
     'subjects',
+    'students',
 
     # 3rd party apps
     'rest_framework'
