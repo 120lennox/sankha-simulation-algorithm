@@ -44,7 +44,7 @@ class Program:
 
     @classmethod
     def from_programModel(cls, program_model, capacity=None):
-        # returns new program data structure innstance 
+        # returns new program data structure instance 
 
         # get all subject requirements for this program
         requirements = program_model.subject_requirements.all()
