@@ -11,13 +11,16 @@ class DBInterface:
         try:
             prog = Program.objects.get(id=program_id)
             program = Program.from_programModel(prog)
-            return program
+            return prog
         except:
-            return None
+            return f'failed to get program with id {program_id}'
 
     def get_applicant(self, applicant_id):
         try:
-            applicant = Applicant.objects.get(id=applicant_id)
+            applic = Applicant.objects.get(id=applicant_id)
+
+            # create new program in a datastructure
+            applicant = Applicant.from_applicantModel(applic)
             return applicant
         except:
             return None
