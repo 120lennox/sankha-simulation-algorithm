@@ -11,7 +11,7 @@ class DBInterface:
         try:
             prog = Program.objects.get(id=program_id)
             program = Program.from_programModel(prog)
-            return prog
+            return program
         except:
             return f'failed to get program with id {program_id}'
 
