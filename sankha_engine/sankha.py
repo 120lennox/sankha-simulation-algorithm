@@ -6,6 +6,9 @@ class SankhaEngine:
         self.applicants = applicants or []
 
     def load_data(self, programs=None, applicants=None):
+        """
+        
+        """
         if programs:
             self.programs = programs
         else:
@@ -25,10 +28,9 @@ class SankhaEngine:
         """
         if hasattr(applicant, 'subjects'):
             return applicant.subjects[subject_name]
+        return None
 
-
-
-    def calculate_aggregate_score(self):
+    def calculate_aggregate_score(self, applicant, program):
         pass
 
     def select_students(self):
