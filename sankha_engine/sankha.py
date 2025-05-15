@@ -7,7 +7,8 @@ class SankhaEngine:
 
     def load_data(self, programs=None, applicants=None):
         """
-        
+        programs: if available in a constructor
+        applicants:fetch from ApplicantDS
         """
         if programs:
             self.programs = programs
@@ -31,7 +32,29 @@ class SankhaEngine:
         return None
 
     def calculate_aggregate_score(self, applicant, program):
-        pass
+        if not program.subject_requirements:
+            return 0
+        
+        eligible = True
+        total_score = 0
+        total_grades = len(program.subject_requirements)
+
+        # 
+        for subject_name, min_requirement_grade in program.subject_requirements.items():
+            student_grade = self._get_student_grade(applicant, subject_name)
+            if student_grade is None or student_grade < min_requirement_grade:
+                eligible = False
+                break
+
+            total_score += student_grade
+        
+        # student meets all minimum requirements
+        if eligible and total_grades > 0:
+            return total_score
+        
+        else:
+            return None
+
 
     def select_students(self):
         pass
