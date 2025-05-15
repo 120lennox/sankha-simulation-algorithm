@@ -1,7 +1,7 @@
 from db_interfaces import DBInterface
 class SankhaEngine:
     def __init__(self):
-        pass                                                                                                                                                      
+        pass                                                                                                                                                     
 
     def calculate_aggregate_score(self):
         pass

@@ -1,13 +1,11 @@
 class ApplicantDS:
-    def __init__(self):
-        pass
-    # def __init__(self, id, name, grades, program_choice):
-    #     self.id = id
-    #     self.name = name
-    #     self.grades = grades # dictionary
-    #     self.program_choice = program_choice
-    #     self.is_admitted = False
-    #     self.aggregate_score = None
+    def __init__(self, id, name, grades, program_choice):
+        self.id = id
+        self.name = name
+        self.grades = grades # dictionary
+        self.program_choice = program_choice
+        self.is_admitted = False
+        self.aggregate_score = None
 
     # linking student data structure with applicant database model
 
