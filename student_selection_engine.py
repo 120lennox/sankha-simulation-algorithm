@@ -49,30 +49,33 @@ class SankhaEngine:
             
         Returns:
             float: The calculated aggregate score.
+            None: If the student doesn't meet minimum requirements.
         """
         if not program.subject_requirements:
             return 0
             
         total_score = 0
-        weight_sum = 0
+        total_subjects = len(program.subject_requirements)
+        eligible = True
         
         # Iterate through each subject requirement for the program
-        for subject_name, max_grade in program.subject_requirements.items():
+        for subject_name, min_required_grade in program.subject_requirements.items():
             # Get the student's grade for this subject
             student_grade = self._get_student_grade(student, subject_name)
             
-            if student_grade is not None:
-                # Calculate weighted score for this subject
-                # Normalize by dividing by max_grade and multiply by weight
-                weight = 1  # Default weight, can be customized per subject if needed
-                normalized_grade = student_grade / max_grade
-                total_score += normalized_grade * weight
-                weight_sum += weight
+            # Check if student meets minimum requirement for this subject
+            if student_grade is None or student_grade < min_required_grade:
+                eligible = False
+                break
+                
+            # Add the student's grade to the total score
+            total_score += student_grade
         
-        # Calculate final aggregate score (normalize by total weight)
-        if weight_sum > 0:
-            return total_score / weight_sum
-        return 0
+        # Only calculate aggregate if student meets all minimum requirements
+        if eligible and total_subjects > 0:
+            return total_score / total_subjects
+        else:
+            return None  # Student doesn't qualify for this program
     
     def _get_student_grade(self, student, subject_name):
         """
@@ -106,7 +109,9 @@ class SankhaEngine:
             program_scores = []
             for student in self.students:
                 score = self.calculate_aggregate_score(student, program)
-                program_scores.append((student.id, score))
+                # Only include students who meet the minimum requirements (score is not None)
+                if score is not None:
+                    program_scores.append((student.id, score))
             
             # Sort by score in descending order
             program_scores.sort(key=lambda x: x[1], reverse=True)

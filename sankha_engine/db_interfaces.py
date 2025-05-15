@@ -31,7 +31,8 @@ class DBInterface:
         
     def get_all_programs(self):
         try:
-            programs = Program.objects.all()
+            progs = Program.objects.all()
+            programs = ProgramDS.from_programModel(progs)
             return programs
         except:
             return None
