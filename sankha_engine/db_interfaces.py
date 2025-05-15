@@ -7,12 +7,16 @@ class DBInterface:
     def __init__(self):
         pass
 
-    def get_program(self,program_id):
+    def get_program(self, program_id):
+        print(f"Looking up program with ID: {program_id}")
         try:
             prog = Program.objects.get(id=program_id)
+            print(f"Found program model: {prog}")
+            
             program = Program.from_programModel(prog)
             return program
-        except:
+        except Exception as e:
+            print(f"Error in get_program: {e}")
             return f'failed to get program with id {program_id}'
 
     def get_applicant(self, applicant_id):
