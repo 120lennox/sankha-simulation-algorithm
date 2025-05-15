@@ -1,7 +1,7 @@
 from programs.models import Program
 from applicants.models import Applicant
 from subjects.models import Subject
-from .data_structures import Applicant, Program
+from .data_structures import ApplicantDS, ProgramDS
 
 class DBInterface:
     def __init__(self):
@@ -13,7 +13,7 @@ class DBInterface:
             prog = Program.objects.get(id=program_id)
             print(f"Found program model: {prog}")
             
-            program = Program.from_programModel(prog)
+            program = ProgramDS.from_programModel(prog)
             return program
         except Exception as e:
             print(f"Error in get_program: {e}")
@@ -24,7 +24,7 @@ class DBInterface:
             applic = Applicant.objects.get(id=applicant_id)
 
             # create new program in a datastructure
-            applicant = Applicant.from_applicantModel(applic)
+            applicant = ApplicantDS.from_applicantModel(applic)
             return applicant
         except:
             return None

@@ -1,4 +1,4 @@
-class Applicant:
+class ApplicantDS:
     def __init__(self):
         pass
     # def __init__(self, id, name, grades, program_choice):
@@ -30,7 +30,7 @@ class Applicant:
             program_choice = program_choice
         )
 
-class Program:
+class ProgramDS:
 
     # constructor 
     def __init__(self, id, name, capacity, subject_requirements):
