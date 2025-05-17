@@ -55,14 +55,36 @@ class SankhaEngine:
         else:
             return None
 
-    def _get_program_id(self, applicant):
+    def _get_program_choices(self, applicant):
         # gets specific program choice of an applicant
         if hasattr(applicant, "program"):
             return [applicant.id for program in applicant.program.all()]
         return []
 
-    def select_students(self):
-        pass
+    def select_applicants(self):
+        """
+        select_applicant: Select applicants for each program based on their aggregate scores   and preferences
+        return: dictionary mapping program IDs to student IDs
+        NB: an applicant becomes a student once they're enrolled into a program
+        """
+
+        applicant_scores = {}
+
+        # 
+        for applicant in self.applicants:
+            applicant_scores[applicant.id] = []
+            program_choices = self._get_program_choices(applicant)
+
+            for program_id in program_choices:
+                #
+                program = next((p for p in self.programs if p.id == program.id), None)
+                if program:
+                    score = self.calculate_aggregate_score(applicant, program)
+                    if score is not None: #
+                        applicant_scores[applicant.id].append((program_id, score))
+
+
+
 
     def update_selected_students(self):
         pass
