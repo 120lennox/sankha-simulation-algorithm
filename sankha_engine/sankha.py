@@ -55,6 +55,11 @@ class SankhaEngine:
         else:
             return None
 
+    def _get_program_id(self, applicant):
+        # gets specific program choice of an applicant
+        if hasattr(applicant, "program"):
+            return [applicant.id for program in applicant.program.all()]
+        return []
 
     def select_students(self):
         pass

@@ -7,7 +7,7 @@ class Applicant(models.Model):
     email = models.EmailField(max_length=100)
     school = models.CharField(max_length=200)
     subjects = models.ManyToManyField(Grade)
-    program = models.ManyToManyField(Program)
+    program = models.ManyToManyField(Program) # choice of program
 
     def __str__(self):
         return self.name
