@@ -82,6 +82,17 @@ class SankhaEngine:
                     score = self.calculate_aggregate_score(applicant, program)
                     if score is not None: #
                         applicant_scores[applicant.id].append((program_id, score))
+        
+        # selection starts
+        print("start selection...") # delete line in production
+        #initialize selection with an empty dictionary
+        selection = {}
+        for program in self.programs:
+            selection[program.id] = []
+        
+        # sort students based on grades. students with low aggregate score (points) get selected first 
+
+        
 
 
 
